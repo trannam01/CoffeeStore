@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B08F627-DD3D-4C4E-8D68-08CDA6E1276E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoffeeStore</RootNamespace>
+    <AssemblyName>CoffeeStore</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44342</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="NBitcoin, Version=7.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NBitcoin.7.0.6\lib\net472\NBitcoin.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CoffeeStoreController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="log4net\ILog.cs" />
+    <Compile Include="log4net\LogManager.cs" />
+    <Compile Include="Models\DBCoffeeStore.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCoffeeStore.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\MoMoSecurity.cs" />
+    <Compile Include="Models\PaymentRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\css\bootstrap.min.css" />
+    <Content Include="css\css\style.css" />
+    <Content Include="css\flex-slider.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\lightbox.css" />
+    <Content Include="css\owl-carousel.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\templatemo-hexashop.css" />
+    <Content Include="dashmin-1.0.0\404.html" />
+    <Content Include="dashmin-1.0.0\blank.html" />
+    <Content Include="dashmin-1.0.0\bootstrap-admin-template-free.jpg" />
+    <Content Include="dashmin-1.0.0\button.html" />
+    <Content Include="dashmin-1.0.0\chart.html" />
+    <Content Include="dashmin-1.0.0\css\bootstrap.min.css" />
+    <Content Include="dashmin-1.0.0\css\style.css" />
+    <Content Include="dashmin-1.0.0\element.html" />
+    <Content Include="dashmin-1.0.0\form.html" />
+    <Content Include="dashmin-1.0.0\Image\testimonial-1.jpg" />
+    <Content Include="dashmin-1.0.0\Image\testimonial-2.jpg" />
+    <Content Include="dashmin-1.0.0\Image\user.jpg" />
+    <Content Include="dashmin-1.0.0\index.html" />
+    <Content Include="dashmin-1.0.0\lib\chart\chart.min.js" />
+    <Content Include="dashmin-1.0.0\lib\easing\easing.js" />
+    <Content Include="dashmin-1.0.0\lib\easing\easing.min.js" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="dashmin-1.0.0\lib\tempusdominus\css\tempusdominus-bootstrap-4.css" />
+    <Content Include="dashmin-1.0.0\lib\tempusdominus\css\tempusdominus-bootstrap-4.min.css" />
+    <Content Include="dashmin-1.0.0\lib\tempusdominus\js\moment-timezone.min.js" />
+    <Content Include="dashmin-1.0.0\lib\tempusdominus\js\moment.min.js" />
+    <Content Include="dashmin-1.0.0\lib\tempusdominus\js\tempusdominus-bootstrap-4.js" />
+    <Content Include="dashmin-1.0.0\lib\tempusdominus\js\tempusdominus-bootstrap-4.min.js" />
+    <Content Include="dashmin-1.0.0\lib\waypoints\links.php" />
+    <Content Include="dashmin-1.0.0\lib\waypoints\waypoints.min.js" />
+    <Content Include="dashmin-1.0.0\LICENSE.txt" />
+    <Content Include="dashmin-1.0.0\READ-ME.txt" />
+    <Content Include="dashmin-1.0.0\Scripts\main.js" />
+    <Content Include="dashmin-1.0.0\signin.html" />
+    <Content Include="dashmin-1.0.0\signup.html" />
+    <Content Include="dashmin-1.0.0\table.html" />
+    <Content Include="dashmin-1.0.0\typography.html" />
+    <Content Include="dashmin-1.0.0\widget.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\flexslider-icon.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\slick.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="HinhSanPham\cafe1.jpg" />
+    <Content Include="HinhSanPham\cafe10.jpg" />
+    <Content Include="HinhSanPham\cafe11.jpg" />
+    <Content Include="HinhSanPham\cafe12.jpg" />
+    <Content Include="HinhSanPham\cafe13.jpg" />
+    <Content Include="HinhSanPham\cafe14.png" />
+    <Content Include="HinhSanPham\cafe15.png" />
+    <Content Include="HinhSanPham\cafe16.png" />
+    <Content Include="HinhSanPham\cafe17.png" />
+    <Content Include="HinhSanPham\cafe18.png" />
+    <Content Include="HinhSanPham\cafe19.jpg" />
+    <Content Include="HinhSanPham\cafe2.jpg" />
+    <Content Include="HinhSanPham\cafe20.jpg" />
+    <Content Include="HinhSanPham\cafe21.jpg" />
+    <Content Include="HinhSanPham\cafe22.jpg" />
+    <Content Include="HinhSanPham\cafe23.jpg" />
+    <Content Include="HinhSanPham\cafe24.jpg" />
+    <Content Include="HinhSanPham\cafe25.jpg" />
+    <Content Include="HinhSanPham\cafe26.jpg" />
+    <Content Include="HinhSanPham\cafe27.jpg" />
+    <Content Include="HinhSanPham\cafe28.jpg" />
+    <Content Include="HinhSanPham\cafe29.jpg" />
+    <Content Include="HinhSanPham\cafe3.jpg" />
+    <Content Include="HinhSanPham\cafe30.jpg" />
+    <Content Include="HinhSanPham\cafe31.jpg" />
+    <Content Include="HinhSanPham\cafe32.jpg" />
+    <Content Include="HinhSanPham\cafe33.jpg" />
+    <Content Include="HinhSanPham\cafe34.jpg" />
+    <Content Include="HinhSanPham\cafe35.jpg" />
+    <Content Include="HinhSanPham\cafe36.jpg" />
+    <Content Include="HinhSanPham\cafe37.jpg" />
+    <Content Include="HinhSanPham\cafe38.jpg" />
+    <Content Include="HinhSanPham\cafe39.jpg" />
+    <Content Include="HinhSanPham\cafe4.jpg" />
+    <Content Include="HinhSanPham\cafe40.jpg" />
+    <Content Include="HinhSanPham\cafe41.jpg" />
+    <Content Include="HinhSanPham\cafe42.jpg" />
+    <Content Include="HinhSanPham\cafe44.jpg" />
+    <Content Include="HinhSanPham\cafe5.jpg" />
+    <Content Include="HinhSanPham\cafe6.jpg" />
+    <Content Include="HinhSanPham\cafe7.jpg" />
+    <Content Include="HinhSanPham\cafe8.jpg" />
+    <Content Include="HinhSanPham\cafe9.jpg" />
+    <Content Include="HinhSanPham\logo.png" />
+    <Content Include="images\AdminSlider.png" />
+    <Content Include="images\app-store.png" />
+    <Content Include="images\cart.png" />
+    <Content Include="images\Image\testimonial-1.jpg" />
+    <Content Include="images\Image\testimonial-2.jpg" />
+    <Content Include="images\Image\user.jpg" />
+    <Content Include="images\IndexAdmin.jpg" />
+    <Content Include="images\login.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\logoweb.png" />
+    <Content Include="images\play-store.png" />
+    <Content Include="images\slider.jpg" />
+    <Content Include="images\slider1.jpg" />
+    <Content Include="images\slider2.jpg" />
+    <Content Include="images\slider3.jpg" />
+    <Content Include="images\slider4.jpg" />
+    <Content Include="images\testimonial-1.jpg" />
+    <Content Include="images\testimonial-2.jpg" />
+    <Content Include="images\user.jpg" />
+    <Content Include="lib\chart\chart.min.js" />
+    <Content Include="lib\easing\easing.js" />
+    <Content Include="lib\easing\easing.min.js" />
+    <Content Include="lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="lib\owlcarousel\owl.carousel.js" />
+    <Content Include="lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="lib\tempusdominus\css\tempusdominus-bootstrap-4.css" />
+    <Content Include="lib\tempusdominus\css\tempusdominus-bootstrap-4.min.css" />
+    <Content Include="lib\tempusdominus\js\moment-timezone.min.js" />
+    <Content Include="lib\tempusdominus\js\moment.min.js" />
+    <Content Include="lib\tempusdominus\js\tempusdominus-bootstrap-4.js" />
+    <Content Include="lib\tempusdominus\js\tempusdominus-bootstrap-4.min.js" />
+    <Content Include="lib\waypoints\links.php" />
+    <Content Include="lib\waypoints\waypoints.min.js" />
+    <Content Include="Scripts\accordions.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="lib\owlcarousel\LICENSE" />
+    <Content Include="fonts\Flaticon.woff" />
+    <Content Include="fonts\flexslider-icon.eot" />
+    <Content Include="fonts\flexslider-icon.ttf" />
+    <Content Include="fonts\flexslider-icon.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\slick.eot" />
+    <Content Include="fonts\slick.ttf" />
+    <Content Include="fonts\slick.woff" />
+    <Content Include="dashmin-1.0.0\lib\owlcarousel\LICENSE" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\bootstrap.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_floating-labels.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_labels.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\forms\_validation.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_position.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_color-scheme.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_container.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\utilities\_api.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_accordion.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_alert.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_badge.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_button-group.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_buttons.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_card.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_carousel.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_close.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_containers.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_dropdown.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_forms.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_functions.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_grid.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_helpers.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_images.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_list-group.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_mixins.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_modal.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_nav.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_navbar.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_offcanvas.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_pagination.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_popover.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_progress.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_reboot.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_root.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_spinners.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_tables.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_toasts.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_tooltip.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_transitions.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_type.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_utilities.scss" />
+    <Content Include="dashmin-1.0.0\scss\bootstrap\scss\_variables.scss" />
+    <Content Include="log4net.config" />
+    <Content Include="Models\DBCoffeeStore.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DBCoffeeStore.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\DBCoffeeStore.dbml.layout">
+      <DependentUpon>DBCoffeeStore.dbml</DependentUpon>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\datepicker.js" />
+    <Content Include="Scripts\imgfix.min.js" />
+    <Content Include="Scripts\isotope.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.counterup.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl-carousel.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\quantity.js" />
+    <Content Include="Scripts\scrollreveal.min.js" />
+    <Content Include="Scripts\slick.js" />
+    <Content Include="Scripts\waypoints.min.js" />
+    <Content Include="tinymce\js\tinymce\icons\default\icons.min.js" />
+    <Content Include="tinymce\js\tinymce\license.txt" />
+    <Content Include="tinymce\js\tinymce\models\dom\model.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\emoticons\js\emojiimages.js" />
+    <Content Include="tinymce\js\tinymce\plugins\emoticons\js\emojiimages.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\emoticons\js\emojis.js" />
+    <Content Include="tinymce\js\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\quickbars\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="tinymce\js\tinymce\skins\content\dark\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\content\default\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\content\document\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\content\tinymce-5-dark\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\content\tinymce-5\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\content\writer\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide-dark\content.inline.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide-dark\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide-dark\skin.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide-dark\skin.shadowdom.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide\content.inline.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide\skin.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\oxide\skin.shadowdom.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5-dark\content.inline.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5-dark\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5-dark\skin.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5\content.inline.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5\content.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5\skin.min.css" />
+    <Content Include="tinymce\js\tinymce\skins\ui\tinymce-5\skin.shadowdom.min.css" />
+    <Content Include="tinymce\js\tinymce\themes\silver\theme.min.js" />
+    <Content Include="tinymce\js\tinymce\tinymce.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\CoffeeStore\Index.cshtml" />
+    <Content Include="Views\CoffeeStore\LoaiCoffee.cshtml" />
+    <Content Include="scss\bootstrap.scss" />
+    <Content Include="scss\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="scss\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="scss\bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="scss\bootstrap\scss\bootstrap.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_floating-labels.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_labels.scss" />
+    <Content Include="scss\bootstrap\scss\forms\_validation.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_position.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="scss\bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_color-scheme.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_container.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="scss\bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="scss\bootstrap\scss\utilities\_api.scss" />
+    <Content Include="scss\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="scss\bootstrap\scss\_accordion.scss" />
+    <Content Include="scss\bootstrap\scss\_alert.scss" />
+    <Content Include="scss\bootstrap\scss\_badge.scss" />
+    <Content Include="scss\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="scss\bootstrap\scss\_button-group.scss" />
+    <Content Include="scss\bootstrap\scss\_buttons.scss" />
+    <Content Include="scss\bootstrap\scss\_card.scss" />
+    <Content Include="scss\bootstrap\scss\_carousel.scss" />
+    <Content Include="scss\bootstrap\scss\_close.scss" />
+    <Content Include="scss\bootstrap\scss\_containers.scss" />
+    <Content Include="scss\bootstrap\scss\_dropdown.scss" />
+    <Content Include="scss\bootstrap\scss\_forms.scss" />
+    <Content Include="scss\bootstrap\scss\_functions.scss" />
+    <Content Include="scss\bootstrap\scss\_grid.scss" />
+    <Content Include="scss\bootstrap\scss\_helpers.scss" />
+    <Content Include="scss\bootstrap\scss\_images.scss" />
+    <Content Include="scss\bootstrap\scss\_list-group.scss" />
+    <Content Include="scss\bootstrap\scss\_mixins.scss" />
+    <Content Include="scss\bootstrap\scss\_modal.scss" />
+    <Content Include="scss\bootstrap\scss\_nav.scss" />
+    <Content Include="scss\bootstrap\scss\_navbar.scss" />
+    <Content Include="scss\bootstrap\scss\_offcanvas.scss" />
+    <Content Include="scss\bootstrap\scss\_pagination.scss" />
+    <Content Include="scss\bootstrap\scss\_popover.scss" />
+    <Content Include="scss\bootstrap\scss\_progress.scss" />
+    <Content Include="scss\bootstrap\scss\_reboot.scss" />
+    <Content Include="scss\bootstrap\scss\_root.scss" />
+    <Content Include="scss\bootstrap\scss\_spinners.scss" />
+    <Content Include="scss\bootstrap\scss\_tables.scss" />
+    <Content Include="scss\bootstrap\scss\_toasts.scss" />
+    <Content Include="scss\bootstrap\scss\_tooltip.scss" />
+    <Content Include="scss\bootstrap\scss\_transitions.scss" />
+    <Content Include="scss\bootstrap\scss\_type.scss" />
+    <Content Include="scss\bootstrap\scss\_utilities.scss" />
+    <Content Include="scss\bootstrap\scss\_variables.scss" />
+    <Content Include="Views\CoffeeStore\SPTheoLoaiCoffee.cshtml" />
+    <Content Include="Views\CoffeeStore\Details.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
+    <Content Include="Views\CoffeeStore\Coffee.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="tinymce\CHANGELOG.md" />
+    <Content Include="tinymce\js\tinymce\langs\README.md" />
+    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
+    <Content Include="Views\Admin\Coffee.cshtml" />
+    <Content Include="Views\Admin\Themcoffeemoi.cshtml" />
+    <Content Include="Views\Admin\Chitietcoffee.cshtml" />
+    <Content Include="Views\Admin\Xoacoffee.cshtml" />
+    <Content Include="Views\Admin\Suacoffee.cshtml" />
+    <Content Include="Views\NguoiDung\DangKy.cshtml" />
+    <Content Include="Views\Admin\LoaiCoffee.cshtml" />
+    <Content Include="Views\Admin\DonDatHang.cshtml" />
+    <Content Include="Views\Admin\NhaSanXuat.cshtml" />
+    <Content Include="Views\Admin\Themloaicoffee.cshtml" />
+    <Content Include="Views\Admin\KhachHang.cshtml" />
+    <Content Include="Views\Admin\Chitietloaicoffee.cshtml" />
+    <Content Include="Views\Admin\Xoaloaicoffee.cshtml" />
+    <Content Include="Views\Admin\Sualoaicoffee.cshtml" />
+    <Content Include="Views\Admin\ThemNSX.cshtml" />
+    <Content Include="Views\Admin\ChitietNSX.cshtml" />
+    <Content Include="Views\Admin\XoaNSX.cshtml" />
+    <Content Include="Views\Admin\SuaNSX.cshtml" />
+    <Content Include="Views\Shared\_LayoutTrangChu.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\IndexTrangChu.cshtml" />
+    <Content Include="Views\Admin\ChitietDDH.cshtml" />
+    <Content Include="Views\Admin\XoaDDH.cshtml" />
+    <Content Include="Views\Admin\SuaDDH.cshtml" />
+    <Content Include="Views\Admin\ChitietKH.cshtml" />
+    <Content Include="Views\Admin\XoaKH.cshtml" />
+    <Content Include="Views\Admin\SuaKH.cshtml" />
+    <Content Include="Views\CoffeeStore\Search.cshtml" />
+    <Content Include="Views\Admin\DangKy.cshtml" />
+    <Content Include="Views\CoffeeStore\CoffeeNew.cshtml" />
+    <Content Include="Views\Admin\Search.cshtml" />
+    <Content Include="Views\Admin\SearchKH.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="tinymce\js\tinymce\tinymce.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64619</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44342/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

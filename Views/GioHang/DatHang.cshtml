@@ -1,0 +1,145 @@
+﻿@using CoffeeStore.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    body {
+        margin-top: 150px;
+    }
+
+    h2 {
+        margin-bottom: 30px;
+    }
+
+    .box {
+        margin-left: 10px;
+    }
+
+    #masp {
+        width: 70px;
+    }
+
+    #tensp {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    #dongia {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    #thanhtien {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .box-title {
+        background-color: gray;
+    }
+
+    table, th, td {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+
+<body>
+    <h2 style="text-align:center">Thông tin hàng hóa</h2>
+    <table align="center" border="1">
+        <tr class="box-title" style="text-align:center;font-weight:bold ">
+            <td style="color:black"> Mã Coffee</td>
+            <td style="color:black">Tên Coffee</td>
+            <td style="color:black">Ảnh Sản Phẩm</td>
+            <td style="color:black">Số Lượng</td>
+            <td style="color:black">Đơn Giá</td>
+            <td style="color:black">Thành Tiền</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="box" style="text-align:center;font-weight:bold;">
+                <td id="masp">@item.MaSP</td>
+                <td id="tensp">@item.TenSP</td>
+                <td><img src="~/HinhSanPham/@item.AnhSP" width="200px" height="120px" /></td>
+                @using (Html.BeginForm("Capnhatgiohang", "GioHang", new { @Masp = item.MaSP }))
+                {
+                    <td>
+                        @item.SL
+                    </td>
+                    <td id="dongia">@string.Format("{0:0,0}", item.DonGia) VNĐ</td>
+                    <td id="thanhtien">@string.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+                }
+            </tr>
+        }
+        <tr style="font-weight: bold; text-align: right; color: red">
+            <td colspan="6" style="padding-right:10px">Số lượng coffee: @ViewBag.TongSL</td>
+        </tr>
+        <tr style="font-weight: bold; text-align: right; color: red">
+            <td colspan="6" style="padding-right:10px">Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
+        </tr>
+        <tr style="font-weight:bold;text-align:right;color:blue">
+            <td colspan="6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    @Html.ActionLink("Trở về giỏ hàng", "GioHang", "GioHang")
+                </button>       
+            </td>
+        </tr>
+    </table>
+    <h2 style="text-align:center;margin-top:20px">Thông tin đặt hàng</h2>
+    @{
+        KHACHHANG kh = (KHACHHANG)Session["USERNAME"];
+    }
+
+<table align="center" style="margin-bottom:10px">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td>Họ tên khách hàng: </td>
+            <td style="font-weight:bold"> @kh.HoTen</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Địa chỉ: </td>
+            <td style="font-weight:bold"> @kh.DiachiKH</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Điện thoại: </td>
+            <td style="font-weight:bold"> @kh.DienthoaiKH</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày đặt: </td>
+            <td style="font-weight:bold"> @DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày giao: </td>
+            <td style="font-weight:bold">
+                <input type="date" name="NGAYNHANHANG" />
+                <br />
+                <span style="color:red">@ViewBag.Thongbao</span>
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Loại thanh toán: </td>
+            <td>
+                @Html.DropDownList("MaLoaiTT")
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Đồng ý đặt hàng" />
+            </td>
+        </tr>
+    }
+</table>
+</body>

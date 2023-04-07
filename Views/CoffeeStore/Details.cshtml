@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .current {
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-right: 10px;
+        border: 2px solid #000;
+        box-shadow: inherit;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script>
+    jQuery(function ($) {
+
+        if (!String.prototype.getDecimals) {
+            String.prototype.getDecimals = function () {
+                var num = this,
+                    match = ('' + num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+                if (!match) {
+                    return 0;
+                }
+                return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
+            }
+        }
+
+        function wcqi_refresh_quantity_increments() {
+            $('div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)').addClass('buttons_added').append('<input type="button" value="+" class="plus" />').prepend('<input type="button" value="-" class="minus" />');
+        }
+
+        $(document).on('updated_wc_div', function () {
+            wcqi_refresh_quantity_increments();
+        });
+
+        $(document).on('click', '.plus, .minus', function () {
+            // Get values
+            var $qty = $(this).closest('.quantity').find('.qty'),
+                currentVal = parseFloat($qty.val()),
+                max = parseFloat($qty.attr('max')),
+                min = parseFloat($qty.attr('min')),
+                step = $qty.attr('step');
+
+            // Format values
+            if (!currentVal || currentVal === '' || currentVal === 'NaN') currentVal = 0;
+            if (max === '' || max === 'NaN') max = '';
+            if (min === '' || min === 'NaN') min = 0;
+            if (step === 'any' || step === '' || step === undefined || parseFloat(step) === 'NaN') step = 1;
+
+            // Change the value
+            if ($(this).is('.plus')) {
+                if (max && (currentVal >= max)) {
+                    $qty.val(max);
+                } else {
+                    $qty.val((currentVal + parseFloat(step)).toFixed(step.getDecimals()));
+                }
+            } else {
+                if (min && (currentVal <= min)) {
+                    $qty.val(min);
+                } else if (currentVal > 0) {
+                    $qty.val((currentVal - parseFloat(step)).toFixed(step.getDecimals()));
+                }
+            }
+
+            // Trigger change event
+            $qty.trigger('change');
+        });
+        wcqi_refresh_quantity_increments();
+    });
+
+    var sl = document.querySelector('#Soluong').value;
+</script>
+<section class="section" id="product" style="margin-top:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="left-images">
+                    <img src="~/HinhSanPham/@Model.Anhbia" alt="@Model.TenCAFE">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right-content">
+                    <h4>@Model.TenCAFE</h4>
+                    <span class="price">@String.Format("{0:0,0}", Model.Giaban) VNĐ</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span>@Model.Mota</span>
+                    <div class="quantity-content">
+                        <div class="left-content">
+                            <h6>Số lượng</h6>
+                        </div>
+                        <div class="right-content">
+                            <div class="quantity buttons_added">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="txtSoLuong" value="1" title="SoLuong" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <div class="main-border-button"><a href="@Url.Action("ThemGioHang", "GioHang", new { @Masp = @Model.MaCAFE, @strURL = Request.Url.ToString()})">Đặt mua</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

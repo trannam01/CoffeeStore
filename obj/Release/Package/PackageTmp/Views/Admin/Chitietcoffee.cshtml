@@ -1,0 +1,97 @@
+﻿@model CoffeeStore.Models.CAFE
+
+@{
+    ViewBag.Title = "Chitietcoffee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+        margin-top: 10px;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+    }
+
+    body{
+        padding-top: 150px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2 style="text-align:center">Chi Tiết Coffee</h2>
+
+    <div style="margin-left: 20px; margin-right: 20px">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Coffee:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TenCAFE)
+            </dd>
+            <dt>
+                Giá Bán:
+            </dt>
+            <dd>
+                @String.Format("{0:0,0}", Model.Giaban) VNĐ
+            </dd>
+            <dt>
+                Mô Tả:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Mota)
+            </dd>
+            <dt>
+                Ngày Cập Nhật:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.Ngaycapnhat)
+            </dd>
+            <dt>
+                Ảnh Sản Phẩm:
+            </dt>
+            <dd>
+                <img src="@Url.Content("~/HinhSanPham/" + Model.Anhbia)" width="250px" />
+            </dd>
+            <dt>
+                Số Lượng Tồn:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Soluongton)
+            </dd>
+            <dt>
+                Loại Coffee:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LOAICAFE.TenLoai)
+            </dd>
+            <dt>
+                Nhà Sản Xuất:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NHASANXUAT.TenNSX)
+            </dd>
+        </dl>
+    </div>
+    <p style="margin: 20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Điều Chỉnh", "Suacoffee", new { id = Model.MaCAFE })</button>  |
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "Coffee")</button>
+    </p>
+</body>

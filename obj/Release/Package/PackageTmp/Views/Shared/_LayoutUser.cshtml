@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="~/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="~/css/lightbox.css">
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky" style="background: #000000; min-height:140px">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/CoffeeStore/Index" class="logo" style="padding-top: 10px; margin-left: -30px">
+                            <img src="~/images/logoweb.png" width="120px" height="120px" />
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav" style="margin-top: 20px; margin-right: -30px">
+                            <li class="scroll-to-section"><a href="/CoffeeStore/Index">Trang chủ</a></li>
+                            <li class="scroll-to-section"><a href="/CoffeeStore/Coffee">Sản phẩm</a></li>
+                            <li class="submenu">
+                                @Html.Action("LoaiCoffee", "CoffeeStore")
+                                <a href="javascript:;">Thương hiệu</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="/NguoiDung/DangNhap" class="context">Login</a></li>
+                            @Html.Action("GioHangPartial", "GioHang")
+                            @Html.Action("Search", "CoffeeStore")
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- ***** Footer Start ***** -->
+    <footer style="margin-top: 0px;background-color:black">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3" style="padding-top:10px">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img src="~/images/logoweb.png" alt="CoffeeTeams" width="100px" height="100px">
+                        </div>
+                        <ul>
+                            <li><a href="#">475A Điện Biên Phủ, P.25, Q.Bình Thạnh, TP.HCM</a></li>
+                            <li><a href="#">namthon8@gmailcom</a></li>
+                            <li><a href="#">098-928-4746</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Loại Coffee</h4>
+                    <ul>
+                        <li><a href="#">Coffee Thế Giới</a></li>
+                        <li><a href="#">Coffee Việt</a></li>
+                        <li><a href="#">Coffee Cảm Hứng</a></li>
+                        <li><a href="#">Đồ Uống</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="#top">Trang chủ</a></li>
+                        <li><a href="/CoffeeStore/Coffee">Sản phẩm</a></li>
+                        <li><a href="#explore">Loại Coffee</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Hỗ trợ &amp; Thông tin</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>
+                            Trang web do Coffee Teams thực hiện.
+                        </p>
+                        <br /><p>Design by: Coffee Teams</p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/phuongnam.312001"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/tpnam_3101/"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/Scripts/owl-carousel.js"></script>
+    <script src="~/Scripts/accordions.js"></script>
+    <script src="~/Scripts/datepicker.js"></script>
+    <script src="~/Scripts/scrollreveal.min.js"></script>
+    <script src="~/Scripts/waypoints.min.js"></script>
+    <script src="~/Scripts/jquery.counterup.min.js"></script>
+    <script src="~/Scripts/imgfix.min.js"></script>
+    <script src="~/Scripts/slick.js"></script>
+    <script src="~/Scripts/lightbox.js"></script>
+    <script src="~/Scripts/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+    </script>
+</body>
+</html>
+<style>
+    footer ul li a {
+        color: coral;
+    }
+</style>

@@ -1,0 +1,57 @@
+﻿@model CoffeeStore.Models.LOAICAFE
+
+@{
+    ViewBag.Title = "Chitietloaicoffee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+        margin-top: 10px;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body style="margin-top: 100px; margin-left: 20px; margin-right: 20px">
+    <h2 style="text-align:center">Chi Tiết Loại Coffee</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mã Loại:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaLoai)
+            </dd>
+            <dt>
+                Tên Loại Coffee:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TenLoai)
+            </dd>
+        </dl>
+    </div>
+    <p style="margin:20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Điều Chỉnh", "Sualoaicoffee", new { id = Model.MaLoai })</button> |
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "LoaiCoffee")</button>
+    </p>
+</body>

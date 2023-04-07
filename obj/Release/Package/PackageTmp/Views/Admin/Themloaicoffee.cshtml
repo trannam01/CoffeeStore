@@ -1,0 +1,38 @@
+﻿@model CoffeeStore.Models.LOAICAFE
+
+@{
+    ViewBag.Title = "Themloaicoffee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    a {
+        color: black;
+    }
+</style>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" style="margin-top: 200px;margin-left: 20px; margin-right: 20px">
+        <h4 style="text-align:center">THÊM LOẠI COFFEE MỚI</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenLoai, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenLoai, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="text-align:center">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm loại coffee" class="btn btn-default" style="text-align:justify;margin-top:10px;color:blue;background-color:lightblue"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin: 20px">
+    <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "LoaiCoffee")</button>
+</div>

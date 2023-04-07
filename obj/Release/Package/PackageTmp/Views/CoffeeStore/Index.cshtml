@@ -1,0 +1,215 @@
+﻿@model IEnumerable<CoffeeStore.Models.CAFE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<body>
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4 style="margin-top: 250px">We Are Coffee Teams</h4>
+                                <div class="main-border-button">
+                                    <a href="@Url.Action("Coffee", "CoffeeStore")">Tìm hiểu thêm</a>
+                                </div>
+                            </div>
+                            <img src="~/images/slider.jpg" height="670px">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Coffee Thế Giới</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Coffee Thế Giới</h4>
+                                                <p>Sản phẩm Coffee Thế Giới Tại Coffee Teams</p>
+                                                <div class="main-border-button">
+                                                    <a href="@Url.Action("SPTheoLoaiCoffee", "CoffeeStore", new { id = 1})">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/images/slider1.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Coffee Cảm Hứng</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Coffee Cảm Hứng</h4>
+                                                <p>Sản phẩm Coffee Cảm Hứng Tại Coffee Teams</p>
+                                                <div class="main-border-button">
+                                                    <a href="@Url.Action("SPTheoLoaiCoffee", "CoffeeStore", new { id = 3})">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/images/slider4.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Coffee Việt</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Coffee Việt</h4>
+                                                <p>Sản phẩm Coffee Việt Tại Coffee Teams</p>
+                                                <div class="main-border-button">
+                                                    <a href="@Url.Action("SPTheoLoaiCoffee", "CoffeeStore", new { id = 2})">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/images/slider2.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Đồ Uống</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Đồ Uống</h4>
+                                                <p>Sản phẩm Đồ Uống Tại Coffee Teams</p>
+                                                <div class="main-border-button">
+                                                    <a href="@Url.Action("SPTheoLoaiCoffee", "CoffeeStore", new { id = 4})">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/images/slider3.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    <!-- ***** New - in Start ******-->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading" style="margin-top:0px">
+                        <h2>Sản phẩm nổi bật</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var sp in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})">
+                                        <img src="~/HinhSanPham/@sp.Anhbia" alt="@sp.TenCAFE" height="250px">
+                                    </a>
+                                </div>
+                                <div class="down-content">
+                                    <h4>@sp.TenCAFE</h4>
+                                    <span>@String.Format("{0:0,0}", @sp.Giaban) VNĐ</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+    <!-- ***** New - in End ******-->
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Sản phẩm sắp ra mắt</h2>
+                        <span>Cà phê Arabica: Đây là loại cafe được trồng phổ biến ở độ cao 600m tại Lâm Đồng, Việt Nam.
+                            Hạt cafe Arabica thường hơi dài, có vị hơi nhạt nhưng mùi thơm vô cùng quyến rũ, nồng nàn.
+                            Chinh phục người dùng kể cả khi đứng từ xa.
+                            Chủng loại này thường có hương vị hơi chua nhưng khi nhấp môi lại đăng đắng đầu lưỡi.
+                            Bạn có thể dễ dàng tìm mua loại hạt cafe này tại cửa hàng Hương Việt, Mê Trang, Leo….
+                        </span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>Ngày phát hành: 09/05/2022</p>
+                        </div>
+                        <p>Thường cafe Arabica có giá 200.000đ/ly 500ml hạt rang mộc, đây là mức giá không quá cao với một loại cafe có hương vị hấp dẫn như thế này</p>
+                        <div class="main-border-button">
+                            <a href="@Url.Action("CoffeeNew", "CoffeeStore")">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Cà phê Moka</h4>
+                                    <span>Loại coffee tương tự</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img src="~/HinhSanPham/cafe10.jpg" height="255px">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img src="~/HinhSanPham/cafe11.jpg" height="255px">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Cà phê Robusta</h4>
+                                    <span>Loại coffee tương tự</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
+</body>

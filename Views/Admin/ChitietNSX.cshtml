@@ -1,0 +1,69 @@
+﻿@model CoffeeStore.Models.NHASANXUAT
+
+@{
+    ViewBag.Title = "ChitietNSX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+        margin-top: 10px;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+    }
+
+    body {
+        margin-top: 100px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2 style="text-align:center">Chi Tiết Nhà Sản Xuất</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên NSX:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TenNSX)
+            </dd>
+            <dt>
+                Địa Chỉ:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Diachi)
+            </dd>
+            <dt>
+                Điện Thoại:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DienThoai)
+            </dd>
+        </dl>
+    </div>
+    <p style="margin:20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Điều Chỉnh", "SuaNSX", new { id = Model.MaNSX })</button> |
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "NhaSanXuat")</button>
+    </p>
+</body>

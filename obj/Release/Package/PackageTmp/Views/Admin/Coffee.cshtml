@@ -1,0 +1,107 @@
+﻿@using CoffeeStore.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<CoffeeStore.Models.CAFE>
+
+@{
+    ViewBag.Title = "Coffee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .pagination {
+        display: inline;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    a{
+        color: black;
+    }
+</style>
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+<body style="margin-top:100px">
+    <section class="section" id="products">
+        <h2>QUẢN LÝ THÔNG TIN SẢN PHẨM</h2>
+        <p>
+            <button style="border-radius: 10px; width: 150px; height: 30px; background-color: blue">@Html.ActionLink("Thêm Coffee Mới", "Themcoffeemoi")</button>
+            @Html.Action("Search", "Admin")
+        </p>
+        <table class="table">
+            <tr>
+                <th>Tên Coffee</th>
+                <th>Giá Bán</th>
+                <th style="width:250px">Mô Tả</th>
+                <th>Ngày Cập Nhật</th>
+                <th>Ảnh SP</th>
+                <th>Mã Loại</th>
+                <th>Mã NSX</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenCAFE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Giaban)
+                    </td>
+                    <td>
+                        @Truncate(item.Mota, 100)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/HinhSanPham/" + item.Anhbia)" height="100px" width="200px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LOAICAFE.TenLoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NHASANXUAT.TenNSX)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Suacoffee", new { id = item.MaCAFE }) |
+                        @Html.ActionLink("Chi tiết", "Chitietcoffee", new { id = item.MaCAFE }) |
+                        @Html.ActionLink("Xóa", "Xoacoffee", new { id = item.MaCAFE })
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li style="text-align:center">
+                        @Html.PagedListPager(Model, page => Url.Action("Coffee", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,77 @@
+﻿@using CoffeeStore.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<CAFE>
+@{
+    ViewBag.Title = "SPTheoLoaiCoffee";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<!-- ***** New - in Start ******-->
+<body style="padding-top:50px">
+    <section class="section" id="products">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>Sản Phẩm Theo Loại</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var sp in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="@Url.Action("Details", "CoffeeStore", new { id = sp.MaCAFE})">
+                                        <img src="~/HinhSanPham/@sp.Anhbia" alt="@sp.TenCAFE" height="197px">
+                                    </a>
+                                </div>
+                                <div class="down-content">
+                                    <h4>@sp.TenCAFE</h4>
+                                    <span>@String.Format("{0:0,0}", sp.Giaban) VNĐ</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li>
+                        @Html.PagedListPager(Model, page => Url.Action("Coffee", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- ***** New - in End ******-->
+</body>
+<style>
+    .pagination {
+        display: inline;
+        padding-left: 0;
+        list-style: none;
+    }
+</style>

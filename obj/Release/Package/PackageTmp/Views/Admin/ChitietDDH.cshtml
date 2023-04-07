@@ -1,0 +1,93 @@
+﻿@model CoffeeStore.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "ChitietDDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+        margin-top: 10px;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+    }
+
+    body {
+        padding-top: 150px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2 style="text-align:center">Chi Tiết Đơn Đặt Hàng</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mã Đơn Đặt Hàng:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaDonHang)
+            </dd>
+            <dt>
+                Đã Thanh Toán:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Dathanhtoan)
+            </dd>
+            <dt>
+                Tình Trạng Giao Hàng:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tinhtranggiaohang)
+            </dd>
+            <dt>
+                Ngày Đặt:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.Ngaydat)
+            </dd>
+            <dt>
+                Ngày Giao:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.Ngaygiao)
+            </dd>
+            <dt>
+                Tên Khách Hàng:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.KHACHHANG.HoTen)
+            </dd>
+            <dt>
+                Loại Thanh Toán:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LoaiThanhToan.TenLoai)
+            </dd>
+        </dl>
+    </div>
+    <p style="margin:20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Điều Chỉnh", "SuaDDH", new { id = Model.MaDonHang })</button> |
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "DonDatHang")</button>
+    </p>
+</body>

@@ -1,0 +1,70 @@
+﻿@using CoffeeStore.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<CoffeeStore.Models.LOAICAFE>
+@{
+    ViewBag.Title = "LoaiCoffee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .pagination {
+        display: inline;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    a{
+        color:black;
+    }
+</style>
+<body style="margin-top:100px">
+    <section class="section" id="products">
+        <h2>QUẢN LÝ THÔNG TIN LOẠI COFFEE</h2>
+        <p>
+            <button style="border-radius: 10px; width: 180px; height: 30px; background-color: blue">@Html.ActionLink("Thêm Loại Coffee Mới", "Themloaicoffee")</button>
+        </p>
+        <table class="table">
+            <tr>
+                <th>Tên Loại Coffee</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenLoai)
+                    </td>
+                   
+                    <td>
+                        @Html.ActionLink("Sửa", "Sualoaicoffee", new { id = item.MaLoai }) |
+                        @Html.ActionLink("Chi tiết", "Chitietloaicoffee", new { id = item.MaLoai }) |
+                        @Html.ActionLink("Xóa", "Xoaloaicoffee", new { id = item.MaLoai })
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li style="text-align:center">
+                        @Html.PagedListPager(Model, page => Url.Action("LoaiCoffee", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>

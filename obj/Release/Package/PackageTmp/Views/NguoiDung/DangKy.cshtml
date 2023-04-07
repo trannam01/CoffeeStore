@@ -1,0 +1,211 @@
+﻿
+@{
+    Layout = null;
+}
+<style>
+    body {
+        background-image: url('/images/login.png');
+        max-width: auto;
+        background-size: cover;
+        background-position-y: -196px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .wrapper {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dangky {
+        max-width: 400px;
+        background: rgba(0,0,0,0.8);
+    }
+
+    .form-input ::placeholder {
+        color: white;
+    }
+
+
+    #content {
+        font-size: 25px;
+        color: white;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    #box {
+        border: 0;
+        background-color: transparent;
+        border-bottom: 1px solid #fff;
+        height: 28px;
+        width: 300px;
+        color: #fff;
+        display: flex;
+        position: relative;
+        padding-left: 20px;
+    }
+
+    .table {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .submit {
+        background-color: transparent;
+        border: 1px solid #fff;
+        text-transform: uppercase;
+        padding: 6px 10px;
+        color: #fff;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+        .submit:hover {
+            border: 1px solid #60A2F5;
+            color: #60A2F5;
+            cursor: pointer;
+        }
+
+    td {
+        color: #fff;
+    }
+
+    .fa {
+        position: absolute;
+        float: right;
+        padding-top: 5px;
+    }
+
+    .signup {
+        color: #fff;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+        .signup:hover {
+            color: #60A2F5;
+            cursor: pointer;
+        }
+
+    img {
+        height: 80px;
+        width: 115px;
+        float: left;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .container span {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        display: none;
+    }
+
+    .container input:valid ~ span {
+        display: block;
+    }
+
+    .container span i.hide-btn::before {
+        content: "\f070";
+    }
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="dangky">
+            <table class="table" align="center">
+                <h2 id="content" text-align:center">ĐĂNG KÝ THÀNH VIÊN</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <tr class="form-input" style="height:40px">
+                        <td>
+                            <i class="fa fa-user-circle"></i>
+                            <input id="box" type="text" placeholder="Họ tên" @Html.TextBox("HoTenKH")
+                            <p style="color:red">@ViewData["Loi1"]</p>
+                        </td>
+                    </tr>
+                    <tr class="form-input" style="height: 40px">
+                        <td>
+                            <i class="fa fa-user-circle-o"></i>
+                            <input id="box" type="text" placeholder="Tên đăng nhập" @Html.TextBox("TenDN")
+                            <p style="color:red">@ViewData["Loi2"]@ViewData["Loi9"]</p>
+                        </td>
+                    </tr>
+                    <tr class="form-input" style="height: 40px">
+                        <td>
+                            <i class="fa fa-unlock-alt"></i>
+                            <input id="box" type="password" placeholder="Mật khẩu" @Html.Password("MatKhau")
+                            <span class="container">
+                                <span class="show-btn"><i class="fa fa-eye"></i></span>
+                            </span>
+                            <p style="color:red">@ViewData["Loi3"]</p>
+                        </td>
+                    </tr>
+                    <tr class="form-input" style="height:40px">
+                        <td>
+                            <i class="fa fa-key"></i>
+                            <input id="box" type="password" placeholder="Nhập lại mật khẩu" @Html.Password("nhaplaiMK")
+                            <span class="container">
+                                <span class="show-btn"><i class="fa fa-eye"></i></span>
+                            </span>
+                            <p style="color:red">@ViewData["Loi4"] @ViewData["Loi5"]</p>
+                        </td>
+                    </tr>
+                    <tr class="form-input" style="height:40px">
+                        <td>
+                            <i class="fa fa-address-book"></i>
+                            <input id="box" type="text" placeholder="Địa chỉ" @Html.TextBox("DiaChi")
+                            <p style="color:red">@ViewData["Loi6"]</p>
+                        </td>
+                    </tr>
+                    <tr class="form-input" style="height:40px">
+                        <td>
+                            <i class="fa fa-phone"></i>
+                            <input id="box" type="text" placeholder="SĐT" @Html.TextBox("SDT")
+                            <p style="color:red">@ViewData["Loi7"]@ViewData["Loi12"]</p>
+                        </td>
+                    </tr>
+                    <tr class="form-input" style="height:40px">
+                        <td>
+                            <i class="fa fa-envelope-o"></i>
+                            <input id="box" type="text" placeholder="Email" @Html.TextBox("Email")
+                            <p style="color:red">@ViewData["Loi8"]@ViewData["Loi10"]</p>
+                        </td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td style="text-align: right">
+                            <img src="~/images/logoweb.png" />
+                            <input class="submit" type="submit" value="Đăng Ký" />
+                        </td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td style="text-align: right">
+                            <a class="signup" href="/NguoiDung/DangNhap">Trở về đăng nhập</a>
+                        </td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td style="text-align: right">
+                            <a class="signup" href="/CoffeeStore/Index">Trang Chủ</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <h3 id="content" style="color:red; text-align:center">@ViewBag.ThongBao</h3>
+        </div>
+    </div>
+</body>

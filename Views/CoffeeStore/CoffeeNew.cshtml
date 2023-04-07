@@ -1,0 +1,45 @@
+﻿@model CoffeeStore.Models.CAFE
+
+@{
+    ViewBag.Title = "CoffeeNew";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .current {
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-right: 10px;
+        border: 2px solid #000;
+        box-shadow: inherit;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+<section class="section" id="product" style="margin-top:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="left-images">
+                    <img src="~/HinhSanPham/@Model.Anhbia" alt="@Model.TenCAFE">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right-content">
+                    <h4>@Model.TenCAFE</h4>
+                    <span class="price">@String.Format("{0:0,0}", Model.Giaban) VNĐ</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span>@Model.Mota</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

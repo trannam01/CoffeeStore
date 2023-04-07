@@ -1,0 +1,171 @@
+﻿@using CoffeeStore.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .title {
+        text-align: center;
+        background-color: #808080;
+        font-weight: bold;
+        padding: 5px;
+    }
+
+    a {
+        color: black;
+    }
+
+    .submit {
+        background-color: orange;
+        font-weight: 600;
+        color: black;
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 5px;
+        box-shadow: inherit;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .Delete-btn {
+        text-decoration: none;
+    }
+
+    body {
+        margin-top: 150px;
+    }
+
+    .title-box {
+        margin-bottom: 20px;
+    }
+
+    .details {
+        margin-top: 10px;
+    }
+
+    .TongSoluong {
+        margin: 10px;
+        padding-right: 10px;
+    }
+
+    .TongTien {
+        padding-right: 10px;
+    }
+
+    .Delete-btn {
+        width: 80px;
+        color: blue;
+    }
+
+    .Details-btn {
+        width: 80px;
+    }
+
+    .Soluong {
+        width: 50px;
+        text-align: center;
+    }
+
+    .dongia {
+        padding: 10px;
+    }
+
+    .thanhtien {
+        padding: 10px;
+    }
+
+    .tensp {
+        text-align: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    .XoaAll {
+        padding-right: 10px;
+    }
+
+    table, th, td {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+
+    main .tensp {
+        border-right: none;
+    }
+
+    .submit :hover {
+        background-color: gray;
+    }
+
+    .abc {
+        color: red;
+    }
+</style>
+<body>
+    <h2 class="title-box" style="text-align:center; ">GIỎ HÀNG</h2>
+    <table align="center" border="1">
+        <tr class="title">
+            <td style="color:black">Mã Coffee</td>
+            <td style="color:black">Tên Coffee</td>
+            <td style="color:black">Ảnh Coffee</td>
+            <td style="color:black">Số lượng</td>
+            <td style="color:black">Đơn giá</td>
+            <td style="color:black">Thành tiền</td>
+            <td width="50px"></td>
+            <td width="50px"></td>
+            <td width="50px"></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="main" style="text-align:center; font-weight: bold;">
+                <td>@item.MaSP</td>
+                <td class="tensp">@item.TenSP</td>
+                <td><img src="~/HinhSanPham/@item.AnhSP" width="200px" height="100px" /></td>
+                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @MaSP = item.MaSP }))
+                {
+                    <td>
+                        <input class="Soluong" type="number" min="1" name="txtSoLuong" value="@item.SL" style="text-align:center;" />
+                    </td>
+                    <td class="dongia">@String.Format("{0:0,0}", item.DonGia) VNĐ</td>
+                    <td class="thanhtien">@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+                    <td class="Details-btn"><a href="@Url.Action("Details", "CoffeeStore", new { id = item.MaSP})" style="text-decoration:none; color:black;max-width:20px">Chi tiết</a></td>
+                    <td><input class="submit" type="submit" value="Cập nhật" /></td>
+                    <td class="Delete-btn">@Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP }) </td>
+                }
+            </tr>
+        }
+        <tr class="box" style="text-align:right; font-weight: bold; color:crimson;">
+            <td class="TongSoluong" colspan="9">Tổng số lượng: @ViewBag.TongSL</td>
+
+        </tr>
+        <tr class="box" style="text-align:right; font-weight: bold; color:crimson;">
+            <td class="TongTien" colspan="9">Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+        </tr>
+        <tr class="box" style="font-weight:bold; text-align: left;padding-left:10px">
+            <td class="XoaAll" colspan="3">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    @Html.ActionLink("Xóa Giỏ Hàng", "XoaTatCaGioHang")
+                </button>
+            </td>
+            <td colspan="3">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    @Html.ActionLink("Mua Tiếp", "Coffee", "CoffeeStore")
+                </button>
+            </td>
+            <td colspan="3" align="center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    @Html.ActionLink("Đặt hàng", "DatHang", "GioHang")
+                </button>
+
+            </td>
+        </tr>
+    </table>
+</body>

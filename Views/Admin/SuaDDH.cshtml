@@ -1,0 +1,104 @@
+﻿@model CoffeeStore.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "SuaDDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    body {
+        padding-top: 150px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2 style="text-align:center">Chỉnh sửa thông tin đơn đặt hàng</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="color:black">
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.MaDonHang)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaDonHang, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div style="font:18px; padding: 5px 0 0 5px"> @Model.MaDonHang </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                @Html.LabelFor(model => model.Dathanhtoan, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Dathanhtoan, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Dathanhtoan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                @Html.LabelFor(model => model.Tinhtranggiaohang, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tinhtranggiaohang, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Tinhtranggiaohang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                @Html.LabelFor(model => model.Ngaydat, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" name="NGAYDAT" value="@String.Format("{0:yyyy-MM-dd}", Model.Ngaydat)" />
+                    @Html.ValidationMessageFor(model => model.Ngaydat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                @Html.LabelFor(model => model.Ngaygiao, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" name="NGAYGIAO" value="@String.Format("{0:yyyy-MM-dd}", Model.Ngaygiao)" />
+                    @Html.ValidationMessageFor(model => model.Ngaygiao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                @Html.LabelFor(model => model.MaKH, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaKH")
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px">
+                @Html.LabelFor(model => model.MaLoaiTT, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaLoaiTT")
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:20px; text-align:center">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Cập Nhật" class="btn btn-default" style="background-color:powderblue" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div style="margin:20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "DonDatHang")</button>
+    </div>
+</body>

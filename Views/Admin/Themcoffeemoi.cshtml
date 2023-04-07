@@ -1,0 +1,112 @@
+﻿@model CoffeeStore.Models.CAFE
+
+@{
+    ViewBag.Title = "Themcoffeemoi";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section {
+        
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    body{
+        padding-top: 90px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    a {
+        color: black;
+    }
+
+</style>
+<body>
+    @using (Html.BeginForm("Themcoffeemoi", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="color: black; margin-top: 100px;">
+        <h4 style="text-align:center">Coffee News</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenCAFE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenCAFE, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenCAFE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.Giaban, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Giaban, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Giaban, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.Mota, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="Mota" rows="10" cols="100">Mô tả sản phẩm</textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.Ngaycapnhat, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="NGAYCAPNHAT" />
+                @Html.ValidationMessageFor(model => model.Ngaycapnhat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.Anhbia, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="fileupload" />
+                @ViewBag.Thongbao
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.Soluongton, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Soluongton, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Soluongton, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.MaLoai, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaLoai")
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.MaNSX, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaNSX")
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:20px; text-align:center">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm Coffee" class="btn btn-default" style="background-color:powderblue" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div style="margin:20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "Coffee")</button> 
+    </div>
+</body>

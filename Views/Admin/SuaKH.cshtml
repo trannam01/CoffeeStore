@@ -1,0 +1,106 @@
+﻿@model CoffeeStore.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "SuaKH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    body {
+        padding-top: 150px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2 style="text-align:center">Chỉnh sửa thông tin khách hàng</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal" style="color:black">
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MaKH)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaKH, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div style="font:18px; padding: 5px 0 0 5px"> @Model.MaKH </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        @Html.LabelFor(model => model.HoTen, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HoTen, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        @Html.LabelFor(model => model.Taikhoan, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Taikhoan, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Taikhoan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        @Html.LabelFor(model => model.DiachiKH, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DiachiKH, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DiachiKH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        @Html.LabelFor(model => model.DienthoaiKH, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DienthoaiKH, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DienthoaiKH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        @Html.LabelFor(model => model.Ngaysinh, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" name="NGAYSINH" value="@String.Format("{0:yyyy-MM-dd}", Model.Ngaysinh)" />
+            @Html.ValidationMessageFor(model => model.Ngaysinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:20px; text-align:center">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cập Nhật" class="btn btn-default" style="background-color:powderblue" />
+        </div>
+    </div>
+</div>
+    }
+
+    <div style="margin:20px">
+        <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "KhachHang")</button>
+    </div>
+</body>

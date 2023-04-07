@@ -1,0 +1,79 @@
+﻿@using CoffeeStore.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<CoffeeStore.Models.DONDATHANG>
+@{
+    ViewBag.Title = "DonDatHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .pagination {
+        display: inline;
+        padding-left: 0;
+        list-style: none;
+    }
+</style>
+<body style="margin-top:100px">
+    <section class="section" id="products">
+        <h2>QUẢN LÝ THÔNG TIN ĐƠN ĐẶT HÀNG</h2>
+        <table class="table">
+            <tr>
+                <th>Đã thanh toán</th>
+                <th>Tình trạng</th>
+                <th>Ngày đặt</th>
+                <th>Ngày giao</th>
+                <th>Tên Khách Hàng</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dathanhtoan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tinhtranggiaohang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaydat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaygiao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "SuaDDH", new { id = item.MaDonHang }) |
+                        @Html.ActionLink("Chi tiết", "ChitietDDH", new { id = item.MaDonHang }) |
+                        @Html.ActionLink("Xóa", "XoaDDH", new { id = item.MaDonHang })
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li style="text-align:center">
+                        @Html.PagedListPager(Model, page => Url.Action("DonDatHang", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>

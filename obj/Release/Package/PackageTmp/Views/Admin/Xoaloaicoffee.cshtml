@@ -1,0 +1,60 @@
+﻿@model CoffeeStore.Models.LOAICAFE
+
+@{
+    ViewBag.Title = "Xoaloaicoffee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body style="margin-top:100px;margin-left:20px;margin-right:20px">
+    <h2 style="text-align:center; color:red">@ViewBag.Thongbao</h2>
+    <br />
+    <h2>XÁC NHẬN THÔNG TIN LOẠI COFFEE CẦN XÓA</h2>
+
+    <div>
+        <hr />
+        <h3 style="text-align:center">Bạn có chắc muốn xóa loại coffee này?</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Loại Coffee:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenLoai)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin:20px">
+                <input type="submit" value="Xóa" class="btn btn-default" style="background-color:lightblue" /> |
+                <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "LoaiCoffee")</button>
+            </div>
+        }
+    </div>
+</body>

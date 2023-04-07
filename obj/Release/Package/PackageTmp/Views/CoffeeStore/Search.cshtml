@@ -1,0 +1,48 @@
+﻿<style>
+    .header-area .main-nav .nav li a {
+        color: coral !important;
+    }
+
+    .background-header .main-nav .nav li a {
+        color: #1e1e1e;
+    }
+
+    li {
+        margin-top: 20px;
+    }
+
+    .topnav .search-container {
+        float: none;
+    }
+
+        .topnav a, .topnav input[type=text], .topnav .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+
+    topnav input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+    }
+
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }
+</style>
+@using (Html.BeginForm("Index", "CoffeeStore"))
+{
+    <li class="search-box">
+        <input type="text" placeholder="Tìm kiếm..." name="Search" style="width:150px" />
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </li>
+}

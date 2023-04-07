@@ -1,0 +1,76 @@
+﻿@model CoffeeStore.Models.NHASANXUAT
+
+@{
+    ViewBag.Title = "XoaNSX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    body {
+        margin-top: 100px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2 style="text-align:center; color:red">@ViewBag.Thongbao</h2>
+    <br />
+    <h2>XÁC NHẬN THÔNG TIN NSX CẦN XÓA</h2>
+
+    <div>
+        <hr />
+        <h3 style="text-align:center">Bạn có chắc muốn xóa nhà sản xuất này ?</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                Tên NSX:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TenNSX)
+            </dd>
+            <dt>
+                Địa Chỉ:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Diachi)
+            </dd>
+            <dt>
+                Điện Thoại:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DienThoai)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin:20px">
+                <input type="submit" value="Xóa NSX" class="btn btn-default" style="background-color:lightblue" /> |
+                <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "NhaSanXuat")</button>
+            </div>
+        }
+    </div>
+</body>

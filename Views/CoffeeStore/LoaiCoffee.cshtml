@@ -1,0 +1,11 @@
+﻿@model IEnumerable<CoffeeStore.Models.LOAICAFE>
+<ul>
+    <li>
+        @foreach (var lcf in Model)
+        {
+            <a href="@Url.Action("SPTheoLoaiCoffee", "CoffeeStore", new { id = lcf.MaLoai})">
+                @lcf.TenLoai
+            </a>
+        }
+    </li>
+</ul>

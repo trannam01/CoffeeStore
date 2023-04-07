@@ -1,0 +1,93 @@
+﻿@model CoffeeStore.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "XoaDDH";
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    body {
+        padding-top: 150px;
+        margin-top: 100px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<body>
+    <h2>XÁC NHẬN THÔNG TIN ĐƠN ĐẶT HÀNG CẦN XÓA</h2>
+
+    <div>
+        <hr />
+        <h3 style="text-align:center">Bạn có chắc muốn xóa đơn đặt hàng này ?</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                Đã Thanh Toán:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Dathanhtoan)
+            </dd>
+            <dt>
+                Tình Trạng Giao Hàng:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tinhtranggiaohang)
+            </dd>
+            <dt>
+                Ngày Đặt:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.Ngaydat)
+            </dd>
+            <dt>
+                Ngày Giao:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.Ngaygiao)
+            </dd>
+            <dt>
+                Tên Khách Hàng:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.KHACHHANG.HoTen)
+            </dd>
+            <dt>
+                Loại Thanh Toán:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LoaiThanhToan.TenLoai)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin:20px">
+                <input type="submit" value="Xóa DDH" class="btn btn-default" style="background-color:lightblue" /> |
+                <button style="border-radius: 20px; width: 100px; height: 40px; background-color: blue">@Html.ActionLink("Trở Về", "DonDatHang")</button>
+            </div>
+        }
+    </div>
+</body>
